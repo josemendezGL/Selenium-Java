@@ -2,7 +2,53 @@
 <testsuite name="com.example.testrunners.UITestRunner" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="Jose-Mendez-MacBook-Pro" time="0.0">
   <properties/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Jun 18, 2024 5:15:56 PM org.openqa.selenium.net.HostIdentifier resolveHostName
+  <system-err><![CDATA[Jun 18, 2024 5:48:30 PM org.openqa.selenium.net.HostIdentifier resolveHostName
+WARNING: Failed to resolve host name
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1744)
+	at java.base/java.lang.ProcessImpl.waitFor(ProcessImpl.java:440)
+	at org.openqa.selenium.net.HostIdentifier.resolveHostName(HostIdentifier.java:52)
+	at org.openqa.selenium.net.HostIdentifier.getHostName(HostIdentifier.java:116)
+	at org.openqa.selenium.WebDriverException.getSystemInformation(WebDriverException.java:95)
+	at org.openqa.selenium.WebDriverException.createMessage(WebDriverException.java:87)
+	at org.openqa.selenium.WebDriverException.getMessage(WebDriverException.java:65)
+	at java.base/java.lang.Throwable.getLocalizedMessage(Throwable.java:420)
+	at java.base/java.lang.Throwable.toString(Throwable.java:519)
+	at java.base/java.lang.Throwable.<init>(Throwable.java:334)
+	at java.base/java.lang.Exception.<init>(Exception.java:103)
+	at java.base/java.lang.RuntimeException.<init>(RuntimeException.java:97)
+	at java.base/java.util.concurrent.CompletionException.<init>(CompletionException.java:88)
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1770)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+
+Exception in thread "Driver Command Executor" java.lang.RuntimeException: java.lang.InterruptedException
+	at org.openqa.selenium.net.HostIdentifier.resolveHostName(HostIdentifier.java:67)
+	at org.openqa.selenium.net.HostIdentifier.getHostName(HostIdentifier.java:116)
+	at org.openqa.selenium.WebDriverException.getSystemInformation(WebDriverException.java:95)
+	at org.openqa.selenium.WebDriverException.createMessage(WebDriverException.java:87)
+	at org.openqa.selenium.WebDriverException.getMessage(WebDriverException.java:65)
+	at java.base/java.lang.Throwable.getLocalizedMessage(Throwable.java:420)
+	at java.base/java.lang.Throwable.toString(Throwable.java:519)
+	at java.base/java.lang.Throwable.<init>(Throwable.java:334)
+	at java.base/java.lang.Exception.<init>(Exception.java:103)
+	at java.base/java.lang.RuntimeException.<init>(RuntimeException.java:97)
+	at java.base/java.util.concurrent.CompletionException.<init>(CompletionException.java:88)
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1770)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1744)
+	at java.base/java.lang.ProcessImpl.waitFor(ProcessImpl.java:440)
+	at org.openqa.selenium.net.HostIdentifier.resolveHostName(HostIdentifier.java:52)
+	... 16 more
+Jun 18, 2024 5:48:30 PM org.openqa.selenium.net.HostIdentifier resolveHostName
 WARNING: Failed to resolve host name
 java.lang.InterruptedException
 	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1744)
