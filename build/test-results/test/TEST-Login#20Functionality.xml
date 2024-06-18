@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Login Functionality" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-18T19:13:20" hostname="Jose-Mendez-MacBook-Pro" time="14.808">
+<testsuite name="Login Functionality" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-18T23:15:42" hostname="Jose-Mendez-MacBook-Pro" time="14.186">
   <properties/>
-  <testcase name="Successful Login with Valid Credentials" classname="Login Functionality" time="14.808"/>
+  <testcase name="Successful Login with Valid Credentials" classname="Login Functionality" time="14.186"/>
   <system-out><![CDATA[
 Scenario: Successful Login with Valid Credentials ?[90m# src/test/resources/features/ui/login.feature:3?[0m
   ?[32mGiven ?[0m?[32muser is on Login page?[0m                     ?[90m# com.example.stepdefinitions.ui.LoginSteps.user_is_on_login_page()?[0m
-  ?[32mWhen ?[0m?[32muser clicks Log in button?[0m                  ?[90m# com.example.stepdefinitions.ui.LoginSteps.user_clicks_login_button()?[0m
-  ?[32mAnd ?[0m?[32muser enters valid credentials?[0m               ?[90m# com.example.stepdefinitions.ui.LoginSteps.user_enters_valid_credentials()?[0m
+  ?[32mWhen ?[0m?[32muser logs in with valid credential?[0m         ?[90m# com.example.stepdefinitions.ui.LoginSteps.user_clicks_login_button()?[0m
   ?[32mThen ?[0m?[32muser is navigated to the Dashboard page?[0m    ?[90m# com.example.stepdefinitions.ui.LoginSteps.user_is_navigated_to_the_home_page()?[0m
 ]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Starting ChromeDriver 126.0.6478.61 (8dc092df54ce9b93406cb7fec530eb297bc0b332-refs/branch-heads/6478_56@{#3}) on port 52109
+Starting ChromeDriver 126.0.6478.61 (8dc092df54ce9b93406cb7fec530eb297bc0b332-refs/branch-heads/6478_56@{#3}) on port 63939
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Jun 18, 2024 1:13:22 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Jun 18, 2024 5:15:43 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-Jun 18, 2024 1:13:22 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Jun 18, 2024 5:15:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 126, so returning the closest version found: a no-op implementation
-Jun 18, 2024 1:13:22 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Jun 18, 2024 5:15:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 INFO: Unable to find CDP implementation matching 126.
-Jun 18, 2024 1:13:22 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+Jun 18, 2024 5:15:43 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
 WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.1.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
 </testsuite>

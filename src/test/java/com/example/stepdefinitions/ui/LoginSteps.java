@@ -3,11 +3,12 @@ package com.example.stepdefinitions.ui;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import com.example.pageobjects.DashboardPage;
 import com.example.pageobjects.LandingPage;
 import com.example.pageobjects.LoginPage;
 import java.time.Duration;
+import io.cucumber.java.Before;
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -40,13 +41,9 @@ public class LoginSteps {
         landingPage = new LandingPage(driver);
     }
 
-    @When("user clicks Log in button")
+    @When("user logs in with valid credential")
     public void user_clicks_login_button() {
         landingPage.clickLoginButton();
-    }
-
-    @When("user enters valid credentials")
-    public void user_enters_valid_credentials() {
         loginPage = new LoginPage(driver);
         loginPage.loginToApp(username, password);
     }
