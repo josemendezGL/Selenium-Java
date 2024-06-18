@@ -3,7 +3,11 @@ package com.example.stepdefinitions.ui;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import com.example.pageobjects.DashboardPage;
+import com.example.pageobjects.LandingPage;
 import com.example.pageobjects.LoginPage;
+import java.time.Duration;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -12,8 +16,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import static org.junit.Assert.*;
 
 public class LoginSteps {
+
+    String username = System.getenv("SITE_USERNAME");
+    String password = System.getenv("SITE_PASSWORD");
+
     WebDriver driver;
+    LandingPage landingPage;
     LoginPage loginPage;
+    DashboardPage dashboardPage;
 
     @Given("user is on Login page")
     public void user_is_on_login_page() {
@@ -25,18 +35,26 @@ public class LoginSteps {
         options.addArguments("--remote-allow-origins=*"); // Agrega esta línea
         // options.addArguments("--headless"); // Si deseas ejecutar en modo sin cabeza
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // espera implícita de 10 segundos
         driver.get("https://trello.com/");
-        loginPage = new LoginPage(driver);
+        landingPage = new LandingPage(driver);
     }
 
     @When("user clicks Log in button")
     public void user_clicks_login_button() {
-        loginPage.clickLoginButton();
+        landingPage.clickLoginButton();
     }
 
-    @Then("user is navigated to the Home page")
+    @When("user enters valid credentials")
+    public void user_enters_valid_credentials() {
+        loginPage = new LoginPage(driver);
+        loginPage.loginToApp(username, password);
+    }
+
+    @Then("user is navigated to the Dashboard page")
     public void user_is_navigated_to_the_home_page() {
-        assertTrue(driver.getCurrentUrl().contains("atlassian"));
+        dashboardPage = new DashboardPage(driver);
+        assertTrue(dashboardPage.isBoardsButtonVisible());
         driver.quit();
     }
 }
