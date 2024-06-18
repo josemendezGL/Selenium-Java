@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_22
+    targetCompatibility = JavaVersion.VERSION_22
+}
+
+dependencies {
+    // Selenium
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.0.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.0.0'
+    // REST Assured
+    testImplementation 'io.rest-assured:rest-assured:4.4.0'
+    // WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.1.0'
+    // JUnit
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnit()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task cucumberTest(type: Test) {
+    useJUnitPlatform()
+    systemProperty 'cucumber.plugin', 'pretty,html:build/reports/cucumber.html,json:build/reports/cucumber.json'
+    systemProperty 'cucumber.glue', 'com.example.stepdefinitions'
+    include '**/testrunners/*Test*.class'
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - UITestRunner</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>UITestRunner</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.testrunners.html">com.example.testrunners</a> &gt; UITestRunner</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">0</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">-</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">-</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Jun 18, 2024 12:18:44 PM org.openqa.selenium.net.HostIdentifier resolveHostName
+WARNING: Failed to resolve host name
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1744)
+	at java.base/java.lang.ProcessImpl.waitFor(ProcessImpl.java:440)
+	at org.openqa.selenium.net.HostIdentifier.resolveHostName(HostIdentifier.java:52)
+	at org.openqa.selenium.net.HostIdentifier.getHostName(HostIdentifier.java:116)
+	at org.openqa.selenium.WebDriverException.getSystemInformation(WebDriverException.java:95)
+	at org.openqa.selenium.WebDriverException.createMessage(WebDriverException.java:87)
+	at org.openqa.selenium.WebDriverException.getMessage(WebDriverException.java:65)
+	at java.base/java.lang.Throwable.getLocalizedMessage(Throwable.java:420)
+	at java.base/java.lang.Throwable.toString(Throwable.java:519)
+	at java.base/java.lang.Throwable.&lt;init&gt;(Throwable.java:334)
+	at java.base/java.lang.Exception.&lt;init&gt;(Exception.java:103)
+	at java.base/java.lang.RuntimeException.&lt;init&gt;(RuntimeException.java:97)
+	at java.base/java.util.concurrent.CompletionException.&lt;init&gt;(CompletionException.java:88)
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1770)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+
+Exception in thread &quot;Driver Service Executor&quot; java.lang.RuntimeException: java.lang.InterruptedException
+	at org.openqa.selenium.net.HostIdentifier.resolveHostName(HostIdentifier.java:67)
+	at org.openqa.selenium.net.HostIdentifier.getHostName(HostIdentifier.java:116)
+	at org.openqa.selenium.WebDriverException.getSystemInformation(WebDriverException.java:95)
+	at org.openqa.selenium.WebDriverException.createMessage(WebDriverException.java:87)
+	at org.openqa.selenium.WebDriverException.getMessage(WebDriverException.java:65)
+	at java.base/java.lang.Throwable.getLocalizedMessage(Throwable.java:420)
+	at java.base/java.lang.Throwable.toString(Throwable.java:519)
+	at java.base/java.lang.Throwable.&lt;init&gt;(Throwable.java:334)
+	at java.base/java.lang.Exception.&lt;init&gt;(Exception.java:103)
+	at java.base/java.lang.RuntimeException.&lt;init&gt;(RuntimeException.java:97)
+	at java.base/java.util.concurrent.CompletionException.&lt;init&gt;(CompletionException.java:88)
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1770)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1744)
+	at java.base/java.lang.ProcessImpl.waitFor(ProcessImpl.java:440)
+	at org.openqa.selenium.net.HostIdentifier.resolveHostName(HostIdentifier.java:52)
+	... 16 more
+?[32m?[1m┌───────────────────────────────────────────────────────────────────────────────────┐?[0m
+?[32m?[1m│?[0m Share your Cucumber Report with your team at ?[36m?[1m?[4mhttps://reports.cucumber.io?[0m          ?[32m?[1m│?[0m
+?[32m?[1m│?[0m Activate publishing with one of the following:                                    ?[32m?[1m│?[0m
+?[32m?[1m│?[0m                                                                                   ?[32m?[1m│?[0m
+?[32m?[1m│?[0m src/test/resources/cucumber.properties:          ?[36mcucumber.publish.enabled?[0m=?[36mtrue?[0m    ?[32m?[1m│?[0m
+?[32m?[1m│?[0m src/test/resources/junit-platform.properties:    ?[36mcucumber.publish.enabled?[0m=?[36mtrue?[0m    ?[32m?[1m│?[0m
+?[32m?[1m│?[0m Environment variable:                            ?[36mCUCUMBER_PUBLISH_ENABLED?[0m=?[36mtrue?[0m    ?[32m?[1m│?[0m
+?[32m?[1m│?[0m JUnit:                                           ?[36m@CucumberOptions?[0m(publish = ?[36mtrue?[0m) ?[32m?[1m│?[0m
+?[32m?[1m│?[0m                                                                                   ?[32m?[1m│?[0m
+?[32m?[1m│?[0m More information at ?[36mhttps://cucumber.io/docs/cucumber/environment-variables/?[0m      ?[32m?[1m│?[0m
+?[32m?[1m│?[0m                                                                                   ?[32m?[1m│?[0m
+?[32m?[1m│?[0m Disable this message with one of the following:                                   ?[32m?[1m│?[0m
+?[32m?[1m│?[0m                                                                                   ?[32m?[1m│?[0m
+?[32m?[1m│?[0m src/test/resources/cucumber.properties:          ?[36mcucumber.publish.quiet?[0m=?[36mtrue?[0m      ?[32m?[1m│?[0m
+?[32m?[1m│?[0m src/test/resources/junit-platform.properties:    ?[36mcucumber.publish.quiet?[0m=?[36mtrue?[0m      ?[32m?[1m│?[0m
+?[32m?[1m└───────────────────────────────────────────────────────────────────────────────────┘?[0m
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.8</a> at Jun 18, 2024, 12:18:44 PM</p>
+</div>
+</div>
+</body>
+</html>
