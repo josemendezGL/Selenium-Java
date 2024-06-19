@@ -8,7 +8,8 @@ public class LoginPage {
 
     By username = By.id("username");
     By password = By.id("password");
-    By loginButton = By.xpath("//*[text()='Log in']");
+    By continueButton = By.xpath("//*[text()='Continue']");
+    By logInButton = By.xpath("//*[text()='Log in']");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -22,12 +23,18 @@ public class LoginPage {
         driver.findElement(password).sendKeys(strPassword);
     }
 
+    public void clickContinueButton() {
+        driver.findElement(continueButton).click();
+    }
+
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        driver.findElement(logInButton).click();
+
     }
 
     public void loginToApp(String strUsername, String strPassword) {
         this.setUsername(strUsername);
+        this.clickContinueButton();
         this.setPassword(strPassword);
         this.clickLoginButton();
     }
