@@ -15,15 +15,17 @@ java {
 }
 
 dependencies {
-    // Selenium
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.21.0'
+
     // Cucumber
     testImplementation 'io.cucumber:cucumber-java:7.0.0'
     testImplementation 'io.cucumber:cucumber-junit:7.0.0'
     // REST Assured
     testImplementation 'io.rest-assured:rest-assured:4.4.0'
-    // WebDriverManager
-    testImplementation 'io.github.bonigarcia:webdrivermanager:5.1.0'
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.8.0'
+
     // JUnit
     testImplementation 'junit:junit:4.13.2'
 }

@@ -12,7 +12,7 @@ public class CustomWebDriverManager {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().driverVersion("126.0.6478.62").setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--no-sandbox");
