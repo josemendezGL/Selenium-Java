@@ -21,10 +21,13 @@ public class LoginSteps {
     LoginPage loginPage;
     DashboardPage dashboardPage;
 
+    public LoginSteps() {
+        this.driver = CustomWebDriverManager.getDriver();
+    }
+
     @Given("user is on Login page")
     public void user_is_on_login_page() {
-        driver = CustomWebDriverManager.getDriver();
-        driver.get("https://trello.com/");
+        // driver.get("https://trello.com/");
         landingPage = new LandingPage(driver);
     }
 

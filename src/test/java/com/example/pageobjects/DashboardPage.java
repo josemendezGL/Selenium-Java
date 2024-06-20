@@ -4,54 +4,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DashboardPage {
-    WebDriver driver;
+public class DashboardPage extends BasePage {
 
-    // By username = By.id("username");
-    // By logInButton = By.xpath("//*[text()='Log in']");
     By boardsButton = By.xpath("//*[text()='Boards']");
+    By createButton = By.cssSelector("[data-testid='header-create-menu-button']");
+    By createBoardButton = By.cssSelector("[data-testid='header-create-board-button']");
+    By boardTitleInput = By.cssSelector("[data-testid='create-board-title-input']");
+    By createBoardSubmitButton = By.cssSelector("[data-testid='create-board-submit-button']");
 
     public DashboardPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public boolean isBoardsButtonVisible() {
-        /*
-         * try {
-         * WebElement element =
-         * wait.until(ExpectedConditions.visibilityOfElementLocated(boardsButton));
-         * return element.isDisplayed();
-         * } catch (Exception e) {
-         * return false;
-         * }
-         */
         WebElement boardsElement = driver.findElement(boardsButton);
         return boardsElement.isDisplayed();
     }
 
-    /*
-     * public void setUsername(String strUsername) {
-     * driver.findElement(username).sendKeys(strUsername);
-     * }
-     * 
-     * public void setPassword(String strPassword) {
-     * driver.findElement(password).sendKeys(strPassword);
-     * }
-     * 
-     * public void clickContinueButton() {
-     * driver.findElement(continueButton).click();
-     * }
-     * 
-     * public void clickLoginButton() {
-     * driver.findElement(logInButton).click();
-     * 
-     * }
-     * 
-     * public void loginToApp(String strUsername, String strPassword) {
-     * this.setUsername(strUsername);
-     * this.clickContinueButton();
-     * this.setPassword(strPassword);
-     * this.clickLoginButton();
-     * }
-     */
+    public void createNewBoard() {
+        WebElement createButtonElement = driver.findElement(createButton);
+        createButtonElement.click();
+        WebElement createBoardButtoElement = driver.findElement(createBoardButton);
+        createBoardButtoElement.click();
+        WebElement boardTitleInputElement = driver.findElement(boardTitleInput);
+        boardTitleInputElement.sendKeys("Created by UI - Selenium");
+        WebElement createBoardSubmitButtonElement = driver.findElement(createBoardSubmitButton);
+        createBoardSubmitButtonElement.click();
+    }
 }
