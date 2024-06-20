@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 
-public class CustomWebDriverManager {
+public abstract class CustomWebDriverManager {
 
     private static WebDriver driver;
 
@@ -25,6 +25,7 @@ public class CustomWebDriverManager {
 
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.get("https://trello.com/");
         }
         return driver;
     }
