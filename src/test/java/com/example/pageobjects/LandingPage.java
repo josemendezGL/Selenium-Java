@@ -1,18 +1,16 @@
 package com.example.pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LandingPage extends BasePage {
+import com.example.pageobjects.locators.LandingPageLocators;
 
-    By loginButton = By.xpath("//*[text()='Log in']");
+public class LandingPage extends BasePage {
 
     public LandingPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        driver.findElement(LandingPageLocators.loginButton).click();
     }
-
 }

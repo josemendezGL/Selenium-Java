@@ -1,19 +1,18 @@
 package com.example.pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BoardPage extends BasePage {
+import com.example.pageobjects.locators.BoardPageLocators;
 
-    By boardNameLabel = By.cssSelector("[data-testid='board-name-display']");
+public class BoardPage extends BasePage {
 
     public BoardPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean isBoardNameLabelVisible() {
-        WebElement boardNameElement = driver.findElement(boardNameLabel);
+        WebElement boardNameElement = driver.findElement(BoardPageLocators.boardNameLabel);
         return boardNameElement.isDisplayed();
     }
 }

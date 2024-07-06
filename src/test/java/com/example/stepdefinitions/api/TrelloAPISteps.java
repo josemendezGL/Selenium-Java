@@ -98,4 +98,5 @@ public class TrelloAPISteps {
         response = apiHelper.getBoard(createdBoardId);
         response.then().body("name", equalTo(newName));
     }
+
 }

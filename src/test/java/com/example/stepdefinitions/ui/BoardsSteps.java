@@ -4,11 +4,11 @@ import com.example.pageobjects.BoardPage;
 import com.example.pageobjects.DashboardPage;
 import com.example.pageobjects.LandingPage;
 import com.example.pageobjects.LoginPage;
+import com.example.utils.APIHelper;
 import com.example.utils.CustomWebDriverManager;
-
-import dev.failsafe.internal.util.Assert;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 
 import static org.junit.Assert.*;
@@ -23,8 +23,18 @@ public class BoardsSteps {
     DashboardPage dashboardPage;
     BoardPage boardPage;
 
+    private String apiKey = System.getenv("TRELLO_API_KEY");
+    private String apiToken = System.getenv("TRELLO_API_TOKEN");
+    private APIHelper apiHelper;
+
     public BoardsSteps() {
         this.driver = CustomWebDriverManager.getDriver();
+    }
+
+    @Before
+    public void setUp() {
+        apiHelper = new APIHelper(apiKey, apiToken);
+        apiHelper.deleteAllBoards();
     }
 
     @When("user creates a new board")
