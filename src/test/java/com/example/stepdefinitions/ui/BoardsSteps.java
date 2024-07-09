@@ -7,7 +7,6 @@ import com.example.pageobjects.LoginPage;
 import com.example.utils.APIHelper;
 import com.example.utils.CustomWebDriverManager;
 import io.cucumber.java.en.When;
-import io.restassured.response.Response;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 
