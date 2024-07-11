@@ -97,6 +97,7 @@ public class TrelloAPISteps {
     public void the_board_name_should_be_updated_to(String newName) {
         response = apiHelper.getBoard(createdBoardId);
         response.then().body("name", equalTo(newName));
+
     }
 
 }
