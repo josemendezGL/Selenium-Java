@@ -8,7 +8,6 @@ import com.example.utils.CustomWebDriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-
 import static org.junit.Assert.*;
 
 public class LoginSteps {
@@ -27,7 +26,6 @@ public class LoginSteps {
 
     @Given("user is on Login page")
     public void user_is_on_login_page() {
-        // driver.get("https://trello.com/");
         landingPage = new LandingPage(driver);
     }
 
@@ -42,6 +40,7 @@ public class LoginSteps {
     public void user_is_navigated_to_the_home_page() {
         dashboardPage = new DashboardPage(driver);
         assertTrue(dashboardPage.isBoardsButtonVisible());
+        // assertFalse(dashboardPage.isBoardsButtonVisible());
         CustomWebDriverManager.quitDriver();
     }
 }
