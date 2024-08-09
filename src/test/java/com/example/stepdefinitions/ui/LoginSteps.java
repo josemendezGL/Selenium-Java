@@ -40,7 +40,6 @@ public class LoginSteps {
     public void user_is_navigated_to_the_home_page() {
         dashboardPage = new DashboardPage(driver);
         assertTrue(dashboardPage.isBoardsButtonVisible());
-        // assertFalse(dashboardPage.isBoardsButtonVisible());
         CustomWebDriverManager.quitDriver();
     }
 }

@@ -2,8 +2,7 @@ package com.example.stepdefinitions.ui;
 
 import com.example.pageobjects.BoardPage;
 import com.example.pageobjects.DashboardPage;
-import com.example.pageobjects.LandingPage;
-import com.example.pageobjects.LoginPage;
+
 import com.example.utils.APIHelper;
 import com.example.utils.CustomWebDriverManager;
 import io.cucumber.java.en.When;
@@ -17,8 +16,6 @@ import org.openqa.selenium.WebDriver;
 public class BoardsSteps {
 
     WebDriver driver;
-    LandingPage landingPage;
-    LoginPage loginPage;
     DashboardPage dashboardPage;
     BoardPage boardPage;
 
@@ -50,5 +47,4 @@ public class BoardsSteps {
         assertTrue(boardPage.isBoardNameLabelVisible());
         CustomWebDriverManager.quitDriver();
     }
-
 }

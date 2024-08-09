@@ -30,3 +30,4 @@ Feature: Trello API Testing
         And I retrieve the created board
         Then the response status code should be 200
         And the response should contain the board details
+
