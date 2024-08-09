@@ -13,20 +13,20 @@ Feature: Trello API Testing
 
     Scenario: Update a board name
         Given I have a valid Trello API key and token
-        When I create a new board for update
+        When I create a new board using API request
         And I update the board name to "Updated Board Name"
         Then the response status code should be 200
         And the board name should be updated to "Updated Board Name"
 
     Scenario: Delete a board
         Given I have a valid Trello API key and token
-        When I create a new board for deletion
+        When I create a new board using API request
         And I delete the created board
         Then the response status code should be 200
 
     Scenario: Get a specific board
         Given I have a valid Trello API key and token
-        When I create a new board for retrieval
+        When I create a new board using API request
         And I retrieve the created board
         Then the response status code should be 200
         And the response should contain the board details
