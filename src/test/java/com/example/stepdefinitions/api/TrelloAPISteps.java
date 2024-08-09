@@ -39,27 +39,28 @@ public class TrelloAPISteps {
     @When("I create a new board using API request")
     public void i_create_a_new_board_using_api_request() {
         response = apiHelper.createNewBoard("Created by API - Selenium");
-    }
-
-    @When("I create a new board for retrieval")
-    public void i_create_a_new_board_for_retrieval() {
-        response = apiHelper.createNewBoard("Board to be retrieved");
         createdBoardId = response.then().extract().path("id");
     }
 
-    @When("I create a new board for update")
-    public void i_create_a_new_board_for_update() {
-        response = apiHelper.createNewBoard("Board to be updated");
-        createdBoardId = response.then().extract().path("id");
-    }
-
-    @When("I create a new board for deletion")
-    public void i_create_a_new_board_for_deletion() {
-        response = apiHelper.createNewBoard("Board to be deleted");
-        createdBoardId = response.then().extract().path("id");
-    }
-
-    // RUD
+    /*
+     * @When("I create a new board for retrieval")
+     * public void i_create_a_new_board_for_retrieval() {
+     * response = apiHelper.createNewBoard("Board to be retrieved");
+     * createdBoardId = response.then().extract().path("id");
+     * }
+     * 
+     * @When("I create a new board for update")
+     * public void i_create_a_new_board_for_update() {
+     * response = apiHelper.createNewBoard("Board to be updated");
+     * createdBoardId = response.then().extract().path("id");
+     * }
+     * 
+     * @When("I create a new board for deletion")
+     * public void i_create_a_new_board_for_deletion() {
+     * response = apiHelper.createNewBoard("Board to be deleted");
+     * createdBoardId = response.then().extract().path("id");
+     * }
+     */
 
     @When("I retrieve the created board")
     public void i_retrieve_the_created_board() {
