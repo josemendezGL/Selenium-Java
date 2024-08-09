@@ -17,14 +17,21 @@ public abstract class CustomWebDriverManager {
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--no-sandbox");
             options.addArguments("--remote-allow-origins=*");
+            options.addArguments("window-size=1920x1080");
 
-            // Agregar modo headless basado en una variable de entorno
-            if (Boolean.parseBoolean(System.getenv("HEADLESS"))) {
+            // Obtener la variable de entorno o propiedad del sistema para el modo headless
+            String headless = System.getenv("HEADLESS");
+            if (headless == null) {
+                headless = System.getProperty("headless", "false");
+            }
+
+            if (Boolean.parseBoolean(headless)) {
                 options.addArguments("--headless");
+                options.addArguments("--disable-gpu"); // Recomendado para el modo headless
             }
 
             driver = new ChromeDriver(options);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             driver.get("https://trello.com/");
         }
         return driver;
