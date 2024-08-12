@@ -3,13 +3,9 @@ package com.example.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.safari.SafariOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
 public abstract class CustomWebDriverManager {
@@ -18,99 +14,48 @@ public abstract class CustomWebDriverManager {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            // Obtener la URL del Selenium Grid desde una variable de entorno o propiedad
-            // del sistema
-            String gridUrl = System.getenv("GRID_URL");
-            if (gridUrl == null) {
-                gridUrl = System.getProperty("gridUrl");
-            }
-
-            // Obtener el navegador deseado desde una propiedad del sistema o variable de
-            // entorno
-            // String browser = System.getenv("BROWSER");
-            String browser = System.getProperty("browser");
+            // Obtener el navegador deseado desde el archivo de configuración
+            String browser = ConfigManager.getProperty("chrome"); // Valor por defecto: "chrome"
             System.out.println("Browser: " + browser);
-            if (browser == null || browser.isEmpty()) {
-                browser = "chrome"; // Valor por defecto solo si no se pasó el parámetro
-            }
 
             // Configurar las opciones del navegador basado en el browser deseado
             switch (browser.toLowerCase()) {
                 case "firefox":
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     configureHeadlessMode(firefoxOptions);
-                    if (gridUrl != null && !gridUrl.isEmpty()) {
-                        try {
-                            driver = new RemoteWebDriver(new URL(gridUrl), firefoxOptions);
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                            throw new RuntimeException("La URL del Selenium Grid es inválida: " + gridUrl);
-                        }
-                    } else {
-                        WebDriverManager.firefoxdriver().setup();
-                        driver = new RemoteWebDriver(firefoxOptions);
-                    }
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new org.openqa.selenium.firefox.FirefoxDriver(firefoxOptions);
                     break;
 
                 case "edge":
                     EdgeOptions edgeOptions = new EdgeOptions();
                     configureHeadlessMode(edgeOptions);
-                    if (gridUrl != null && !gridUrl.isEmpty()) {
-                        try {
-                            driver = new RemoteWebDriver(new URL(gridUrl), edgeOptions);
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                            throw new RuntimeException("La URL del Selenium Grid es inválida: " + gridUrl);
-                        }
-                    } else {
-                        WebDriverManager.edgedriver().setup();
-                        driver = new RemoteWebDriver(edgeOptions);
-                    }
+                    WebDriverManager.edgedriver().setup();
+                    driver = new org.openqa.selenium.edge.EdgeDriver(edgeOptions);
                     break;
 
                 case "safari":
                     SafariOptions safariOptions = new SafariOptions();
-                    if (gridUrl != null && !gridUrl.isEmpty()) {
-                        try {
-                            driver = new RemoteWebDriver(new URL(gridUrl), safariOptions);
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                            throw new RuntimeException("La URL del Selenium Grid es inválida: " + gridUrl);
-                        }
-                    } else {
-                        driver = new RemoteWebDriver(safariOptions);
-                    }
+                    driver = new org.openqa.selenium.safari.SafariDriver(safariOptions);
                     break;
 
                 case "chrome":
                 default:
                     ChromeOptions chromeOptions = new ChromeOptions();
                     configureHeadlessMode(chromeOptions);
-                    if (gridUrl != null && !gridUrl.isEmpty()) {
-                        try {
-                            driver = new RemoteWebDriver(new URL(gridUrl), chromeOptions);
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                            throw new RuntimeException("La URL del Selenium Grid es inválida: " + gridUrl);
-                        }
-                    } else {
-                        WebDriverManager.chromedriver().setup();
-                        driver = new RemoteWebDriver(chromeOptions);
-                    }
+                    WebDriverManager.chromedriver().setup();
+                    driver = new org.openqa.selenium.chrome.ChromeDriver(chromeOptions);
                     break;
             }
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            driver.get("https://trello.com/");
+            driver.get(ConfigManager.getProperty("https://default.url.com/"));
         }
         return driver;
     }
 
     private static void configureHeadlessMode(Object options) {
-        String headless = System.getenv("HEADLESS");
-        if (headless == null) {
-            headless = System.getProperty("headless", "false");
-        }
+        String headless = ConfigManager.getProperty("false");
 
         if (Boolean.parseBoolean(headless)) {
             if (options instanceof ChromeOptions) {
