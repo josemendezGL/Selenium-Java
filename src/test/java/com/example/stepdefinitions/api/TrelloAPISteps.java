@@ -1,4 +1,3 @@
-
 package com.example.stepdefinitions.api;
 
 import io.cucumber.java.Before;
@@ -7,6 +6,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import com.example.utils.APIHelper;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
@@ -14,20 +16,35 @@ import static org.junit.Assert.assertEquals;
 
 public class TrelloAPISteps {
 
-    private String apiKey = System.getenv("TRELLO_API_KEY");
-    private String apiToken = System.getenv("TRELLO_API_TOKEN");
+    private String apiKey;
+    private String apiToken;
     private Response response;
     private String createdBoardId;
     private APIHelper apiHelper;
 
     @Before
     public void setUp() {
+        loadCredentials();
         apiHelper = new APIHelper(apiKey, apiToken);
         apiHelper.deleteAllBoards();
     }
 
+    private void loadCredentials() {
+        Properties properties = new Properties();
+        try (FileInputStream input = new FileInputStream("src/test/resources/credentials.properties")) {
+            properties.load(input);
+            apiKey = properties.getProperty("trello.api.key");
+            apiToken = properties.getProperty("trello.api.token");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Failed to load Trello API credentials from properties file");
+        }
+    }
+
     @Given("I have a valid Trello API key and token")
     public void i_have_a_valid_trello_api_key_and_token() {
+        // No need to do anything here since the credentials are already loaded in
+        // setUp()
     }
 
     @When("I send a GET request to organizations endpoint")
@@ -78,7 +95,5 @@ public class TrelloAPISteps {
     public void the_board_name_should_be_updated_to(String newName) {
         response = apiHelper.getBoard(createdBoardId);
         response.then().body("name", equalTo(newName));
-
     }
-
 }
