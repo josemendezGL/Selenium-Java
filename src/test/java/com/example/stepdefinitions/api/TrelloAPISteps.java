@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import com.example.utils.APIHelper;
-import com.example.utils.SchemaValidator;
+import com.example.utils.SchemaValidator; // Importando SchemaValidator
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -32,7 +32,7 @@ public class TrelloAPISteps {
 
     protected void loadCredentials() {
         Properties properties = new Properties();
-        String env = System.getProperty("env", "dev"); // default value is 'dev'
+        String env = System.getProperty("env", "dev"); // 'dev' es el valor por defecto
         String filename = String.format("src/test/resources/credentials-%s.properties", env);
 
         try (FileInputStream input = new FileInputStream(filename)) {
