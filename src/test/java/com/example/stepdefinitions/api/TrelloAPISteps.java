@@ -101,4 +101,9 @@ public class TrelloAPISteps {
         response = apiHelper.getBoard(createdBoardId);
         response.then().body("name", equalTo(newName));
     }
+
+    @Then("the response should match the schema {string}")
+    public void the_response_should_match_the_schema(String schemaPath) throws Exception {
+        SchemaValidator.validateJsonSchema(response.asString(), schemaPath);
+    }
 }
