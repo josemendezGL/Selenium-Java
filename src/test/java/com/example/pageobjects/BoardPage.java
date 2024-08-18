@@ -15,4 +15,8 @@ public class BoardPage extends BasePage {
         WebElement boardNameElement = driver.findElement(BoardPageLocators.boardNameLabel);
         return boardNameElement.isDisplayed();
     }
+
+    public String getBoardName() {
+        return getText(BoardPageLocators.boardNameLabel);
+    }
 }

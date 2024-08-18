@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import com.example.utils.APIHelper;
+import com.example.utils.SchemaValidator;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -29,22 +30,26 @@ public class TrelloAPISteps {
         apiHelper.deleteAllBoards();
     }
 
-    private void loadCredentials() {
+    protected void loadCredentials() {
         Properties properties = new Properties();
-        try (FileInputStream input = new FileInputStream("src/test/resources/credentials.properties")) {
+        String env = System.getProperty("env", "dev"); // default value is 'dev'
+        String filename = String.format("src/test/resources/credentials-%s.properties", env);
+
+        try (FileInputStream input = new FileInputStream(filename)) {
             properties.load(input);
             apiKey = properties.getProperty("trello.api.key");
             apiToken = properties.getProperty("trello.api.token");
         } catch (IOException ex) {
             ex.printStackTrace();
-            throw new RuntimeException("Failed to load Trello API credentials from properties file");
+            throw new RuntimeException("Failed to load credentials from properties file: " + filename);
         }
     }
 
+    // Steps for API testing
+
     @Given("I have a valid Trello API key and token")
     public void i_have_a_valid_trello_api_key_and_token() {
-        // No need to do anything here since the credentials are already loaded in
-        // setUp()
+        // No action required
     }
 
     @When("I send a GET request to organizations endpoint")
@@ -52,7 +57,7 @@ public class TrelloAPISteps {
         response = apiHelper.sendGetRequestToOrganizationBoards();
     }
 
-    // CREATE
+    // Creation, retrieval, update and deletion steps
     @When("I create a new board using API request")
     public void i_create_a_new_board_using_api_request() {
         response = apiHelper.createNewBoard("Created by API - Selenium");
@@ -74,7 +79,7 @@ public class TrelloAPISteps {
         response = apiHelper.deleteBoard(createdBoardId);
     }
 
-    // Verification
+    // Verification steps
 
     @Then("the response status code should be {int}")
     public void the_response_status_code_should_be(int statusCode) {

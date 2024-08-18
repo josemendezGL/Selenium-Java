@@ -27,3 +27,6 @@ build/
 
 # Dependency directories
 node_modules/
+
+# production credentials
+src/test/resources/credentials-prod.properties
