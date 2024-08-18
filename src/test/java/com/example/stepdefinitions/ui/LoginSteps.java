@@ -8,12 +8,10 @@ import com.example.utils.CustomWebDriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import static org.junit.Assert.*;
 
-public class LoginSteps {
+import static org.junit.Assert.assertTrue;
 
-    String username = System.getenv("SITE_USERNAME");
-    String password = System.getenv("SITE_PASSWORD");
+public class LoginSteps extends BaseSteps {
 
     WebDriver driver;
     LandingPage landingPage;
@@ -22,6 +20,7 @@ public class LoginSteps {
 
     public LoginSteps() {
         this.driver = CustomWebDriverManager.getDriver();
+        loadCredentials();
     }
 
     @Given("user is on Login page")

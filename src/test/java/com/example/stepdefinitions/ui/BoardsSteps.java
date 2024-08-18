@@ -2,25 +2,20 @@ package com.example.stepdefinitions.ui;
 
 import com.example.pageobjects.BoardPage;
 import com.example.pageobjects.DashboardPage;
-
 import com.example.utils.APIHelper;
 import com.example.utils.CustomWebDriverManager;
 import io.cucumber.java.en.When;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
-
-import static org.junit.Assert.*;
-
 import org.openqa.selenium.WebDriver;
 
-public class BoardsSteps {
+import static org.junit.Assert.assertTrue;
+
+public class BoardsSteps extends BaseSteps {
 
     WebDriver driver;
     DashboardPage dashboardPage;
     BoardPage boardPage;
-
-    private String apiKey = System.getenv("TRELLO_API_KEY");
-    private String apiToken = System.getenv("TRELLO_API_TOKEN");
     private APIHelper apiHelper;
 
     public BoardsSteps() {
@@ -29,6 +24,7 @@ public class BoardsSteps {
 
     @Before
     public void setUp() {
+        loadCredentials();
         apiHelper = new APIHelper(apiKey, apiToken);
         apiHelper.deleteAllBoards();
     }
@@ -38,7 +34,6 @@ public class BoardsSteps {
         driver = CustomWebDriverManager.getDriver();
         dashboardPage = new DashboardPage(driver);
         dashboardPage.createNewBoard();
-
     }
 
     @Then("new board is correctly displayed")
