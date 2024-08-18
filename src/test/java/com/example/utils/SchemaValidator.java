@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.InputStream;
 import java.util.Set;
-import java.io.InputStream;
 
 public class SchemaValidator {
 
@@ -18,7 +17,7 @@ public class SchemaValidator {
         JsonSchemaFactory factory = JsonSchemaFactory.getInstance();
 
         // Usar InputStream para cargar el esquema desde el archivo
-        try (InputStream schemaStream = SchemaValidator.class.getResourceAsStream(schemaPath)) {
+        try (InputStream schemaStream = SchemaValidator.class.getClassLoader().getResourceAsStream(schemaPath)) {
             if (schemaStream == null) {
                 throw new RuntimeException("Schema file not found: " + schemaPath);
             }
