@@ -17,7 +17,7 @@ public abstract class CustomWebDriverManager {
     public static WebDriver getDriver() {
         if (driver == null) {
             // Configuración del WebDriver
-            WebDriverManager.chromedriver().driverVersion("126.0.6478.62").setup();
+            WebDriverManager.chromedriver().driverVersion("128.0.6613.85").setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--no-sandbox");

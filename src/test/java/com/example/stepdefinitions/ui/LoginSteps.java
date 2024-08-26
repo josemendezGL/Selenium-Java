@@ -28,7 +28,7 @@ public class LoginSteps extends BaseSteps {
         landingPage = new LandingPage(driver);
     }
 
-    @When("user logs in with valid credential")
+    @When("user logs in with valid credentials")
     public void user_clicks_login_button() {
         landingPage.clickLoginButton();
         loginPage = new LoginPage(driver);
